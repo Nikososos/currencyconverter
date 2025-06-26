@@ -5,7 +5,7 @@ import os
 load_dotenv()
 api_key = os.getenv("api_key")
 
-url = (f"https://v6.exchangerate-api.com/v6/f44f3e2b6fbfeee7dc03f50c/latest/EUR")
+url = (f"https://v6.exchangerate-api.com/{api_key}/latest/EUR")
 params ={"appid": api_key}
 
 def get_eur_to_usd_rate(api_key):
