@@ -1,7 +1,9 @@
 import requests
+from dotenv import load_dotenv
+import os
 
-
-api_key = "f44f3e2b6fbfeee7dc03f50c"
+load_dotenv()
+api_key = os.getenv("api_key")
 
 url = (f"https://v6.exchangerate-api.com/v6/f44f3e2b6fbfeee7dc03f50c/latest/EUR")
 params ={"appid": api_key}
