@@ -5,15 +5,13 @@ import os
 load_dotenv()
 api_key = os.getenv("api_key")
 
-url = f"https://v6.exchangerate-api.com/v6/{api_key}/latest/{base_currency}"
-params ={"appid": api_key}
-
 # print("API KEY: " , api_key)
 
 if api_key is None:
     raise ValueError("API key niet gevonden? Gaat dit wel goed?")
 
 def get_exchange_rate(base_currency, target_currency):
+    url = f"https://v6.exchangerate-api.com/v6/{api_key}/latest/{base_currency}"
     response = requests.get(url)
     data = response.json()
     # print("Status code:", response.status_code)  
@@ -42,5 +40,5 @@ amount = float(input(f"Voer het bedrag in {base_currency} in: ").strip())
 exchange_rate = get_exchange_rate(base_currency, target)
 converted = convert_currency(amount, exchange_rate)
 
-print(f"{eur_amount} EUR is gelijk aan {usd_amount:.2f} USD (Wisselkoers: 1 EUR = {exchange_rate} USD)")
+print(f"{amount} {base_currency} = {converted:.2f} {target} (Wisselkoers: 1 {base_currency} = {exchange_rate} {target})")
 
